@@ -1,18 +1,15 @@
 function numberOfMatches(n: number): number {
-  var result: number = 0;
-
-  function rec(currentNumber: number) {
-    if (currentNumber > 1) {
-      if (currentNumber % 2 !== 0) {
-        result += (currentNumber - 1) / 2;
-        rec((currentNumber + 1) / 2);
-      } else {
-        result += currentNumber / 2;
-        rec(currentNumber / 2);
-      }
-    }
-    return result;
+    let totalMatches = 0;
+  
+    const calculateMatches = (teams: number) => {
+      if (teams <= 1) return;
+      
+      totalMatches += Math.floor(teams / 2);
+      calculateMatches(Math.ceil(teams / 2));
+    };
+  
+    calculateMatches(n);
+    
+    return totalMatches;
   }
-  rec(n);
-  return result;
-}
+  
