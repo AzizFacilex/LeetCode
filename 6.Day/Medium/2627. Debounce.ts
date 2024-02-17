@@ -1,6 +1,6 @@
 type F = (...args: number[]) => void
 
-var debounce = function(fn, t = 1000) {
+var debounce = function(fn, t) {
     let timer;
     return function(...args) {
         clearTimeout(timer);
